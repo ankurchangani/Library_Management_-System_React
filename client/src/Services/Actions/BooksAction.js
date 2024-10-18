@@ -83,16 +83,6 @@ export const singledataAsync = (id) =>{
     }
 }
 
-export const DeleteAsync = (id) => {
-    return (dispatch) => {
-        axios.delete(`http://localhost:3200/Books/${id}`).then((res) => {
-            // console.log("res", res.data);
-            dispatch(GetDataAsync())
-        }).catch((err) => {
-            console.log("err", err);
-        })
-    }
-}
 export const UpdateRecordAsync = (data) => {
     return (dispatch) => {
         axios.put(`http://localhost:3200/Books/${data.id}`, data)
@@ -105,3 +95,15 @@ export const UpdateRecordAsync = (data) => {
             });
     };
 };
+
+
+export const DeleteAsync = (id) => {
+    return (dispatch) => {
+        axios.delete(`http://localhost:3200/Books/${id}`).then((res) => {
+            // console.log("res", res.data);
+            dispatch(GetDataAsync())
+        }).catch((err) => {
+            console.log("err", err);
+        })
+    }
+}
