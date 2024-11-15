@@ -23,6 +23,15 @@ export const UpdateRecord = (data) => {
 
 }
 
+
+const DeleteRecord  = () => {
+
+    return {
+        type: "DeleteRecord",
+    }
+
+}
+
 export const GetData = (data) => {
     return {
         type: "GetData",
@@ -88,6 +97,7 @@ export const UpdateRecordAsync = (data) => {
         axios.put(`http://localhost:3200/Books/${data.id}`, data)
             .then((res) => {
                 console.log(res) ;
+                dispatch(UpdateRecord(res.data));
                 dispatch(GetDataAsync());
             })
             .catch((err) => {
@@ -101,6 +111,8 @@ export const DeleteAsync = (id) => {
     return (dispatch) => {
         axios.delete(`http://localhost:3200/Books/${id}`).then((res) => {
             // console.log("res", res.data);
+            dispatch(DeleteRecord(id));
+            
             dispatch(GetDataAsync())
         }).catch((err) => {
             console.log("err", err);

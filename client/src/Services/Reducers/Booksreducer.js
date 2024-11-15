@@ -13,6 +13,12 @@ const Bookreducer = (state = MainState, action) => {
         ...state,
         Books: action.payload
       }
+
+    case "DeleteRecord":
+      return {
+        ...state,
+      };
+      
       case "SingleRecord":
         return {
             ...state,
